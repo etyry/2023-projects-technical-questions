@@ -45,7 +45,7 @@ export default function Table() {
       },
       {
         alert: 'Done!',
-        status: '<YOUR NAME>',
+        status: 'etyry',
         updates: []
       }
     ]
@@ -53,7 +53,7 @@ export default function Table() {
 
   return (
     <>
-      <AlertModal useContents={useContents} />
+      <AlertModal useContents={useContents} contents={contents}/>
       <div className={styles.myTable}>
         <div className={styles.row}>
           {contents.columnTitles.map((item) => <div className={styles.item} key={item}>{item}</div>)}
@@ -67,7 +67,16 @@ export default function Table() {
               {content.status}
             </div>
             <div className={styles.item}>
-              {/* TODO: add updates */}
+              {content.updates.map(update => 
+                <div>
+                  <div className={styles.update}>
+                    {update.update}
+                  </div>
+                  <div className={styles.date}>
+                    {update.date}
+                  </div>
+                </div>)
+              }
             </div>
           </div>
         ))}
